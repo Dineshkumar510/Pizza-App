@@ -4,14 +4,26 @@
   "description": "Making Pizza delivery app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js",
+    "develop": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "node_modules/.bin/webpack --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
-  "author": "",
+  "author": "Dinesh kumar",
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.1",
     "nodemon": "^2.0.12"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "laravel-mix": "^6.0.25",
+    "resolve-url-loader": "^4.0.0",
+    "sass": "^1.35.2",
+    "sass-loader": "^12.1.0"
   }
 }

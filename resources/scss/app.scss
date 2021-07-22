@@ -1,0 +1,58 @@
+@import './variables';
+
+$primary: #fe5f1e;
+$primary-hover: #b23301;
+$secondary: #f8f8f8;
+$pure: #fff;
+$dark: #232323;
+$gray: #ccc;
+$smooth: all .3s ease-in-out;
+
+// To run sass file with laravel mix use cmd: "npm run watch"
+
+body {
+    font-family: 'Lato', 'sans-serif';
+    -webkit-font-smoothing: antialiased;
+    color: $dark;
+};
+
+nav li:last-child a {
+    background: $primary;
+    &:hover {
+        background-color: $primary-hover;
+    }
+};
+
+nav li a {
+    transition:$smooth;
+    -webkit-transition:$smooth;
+    -moz-transition:$smooth;
+    -ms-transition:$smooth;
+    -o-transition:$smooth;
+    &:hover 
+{
+        color: $primary;
+    }
+};
+
+section.hero {
+    background: $secondary;
+}
+.size {
+    background: $secondary;
+}
+.add-to-cart {
+    border: 2px solid $primary;
+    color: $primary;
+    transition: $smooth;
+    -webkit-transition: $smooth;
+    -moz-transition: $smooth;
+    -ms-transition: $smooth;
+    -o-transition: $smooth;
+    &:hover {
+        background: $primary;
+        border-color: $pure;
+        color: $pure;
+    }
+}
+

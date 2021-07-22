@@ -6,6 +6,9 @@ const expressLayout = require('express-ejs-layouts');
 const PORT = process.env.PORT || 3500;
 
 
+//Assets
+app.use(express.static('public'));
+
 app.get('/', (req, res)=> {
     res.render('home');
 });
