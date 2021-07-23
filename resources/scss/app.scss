@@ -56,3 +56,32 @@ section.hero {
     }
 }
 
+.btn-primary {
+    background: $primary;
+    transition: $smooth;
+    -webkit-transition: $smooth;
+    -moz-transition: $smooth;
+    -ms-transition: $smooth;
+    -o-transition: $smooth;
+    &:hover {
+        background: $primary-hover;
+    }
+}
+
+section.cart {
+    background: $secondary;
+}
+.amount {
+    color: $primary;
+}
+
+section.login {
+    background: $secondary;
+    min-height: calc(100vh - 86px);
+    a {
+        color: $primary;
+        &:hover {
+            color: $primary-hover;
+        }
+    }
+}
