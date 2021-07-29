@@ -4,6 +4,9 @@
         "dburl",
         "kumar",
         "laravel",
+        "mapbox",
+        "middlewares",
+        "postlogin",
         "preconnect",
         "thisismysecret"
     ]
