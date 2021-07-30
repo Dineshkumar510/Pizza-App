@@ -1,5 +1,5 @@
 import axios from 'axios';
-import session from 'express-session';
+import { initAdmin } from './admin';
 
 let addToCart = document.querySelectorAll('.add-to-cart');
 let cartCounter = document.querySelector('#cartCounter');
@@ -35,3 +35,16 @@ addToCart.forEach((btn)=>{
         updateCart(pizza);
     })   
 });
+
+
+//Remove alert message after x seconds
+const alertMsg = document.querySelector('#success-alert');
+if(alertMsg){
+    setTimeOut(()=> {
+        alertMsg.remove()
+    }, 3000)
+};
+
+
+//Admin call:
+initAdmin();
