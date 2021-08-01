@@ -2,12 +2,14 @@
     "cSpell.words": [
         "addtocart",
         "dburl",
+        "hiddeninput",
         "kumar",
         "laravel",
         "mapbox",
         "middlewares",
         "postlogin",
         "preconnect",
+        "socketio",
         "thisismysecret"
     ]
 }

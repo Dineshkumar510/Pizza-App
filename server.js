@@ -1,6 +1,10 @@
 require('dotenv').config()
 const express = require('express');
 const app = express();
+const socketio = require('socket.io');
+const http = require('http');
+const server = http.createServer(app);
+const io = socketio(server);
 const path = require('path');
 const ejs = require('ejs');
 const expressLayout = require('express-ejs-layouts');
@@ -12,6 +16,7 @@ const flash = require('express-flash');
 const MongoDbStore = require('connect-mongo');
 const passport = require('passport');
 const { Console } = require('console');
+const Emitter = require('events'); 
 const dbUrl = 'mongodb://localhost:27017/Pizza';
 
 
@@ -23,10 +28,13 @@ mongoose.connect(dbUrl, {
     useFindAndModify: false
 });
 
+//Event emitter
+const eventEmitter = new Emitter()
+app.set('eventEmitter', eventEmitter);
+
 //session store:
 //The sessions are stored in mongodb in 
 //session config you can see on "store" option 
-
 
 //Session Config
 app.use(session({
@@ -70,6 +78,24 @@ app.set('view engine', 'ejs');
 app.use(Router);
 
 
+//socket connection
+io.on('connect', (socket)=> {
+    //join
+    socket.on('join', (roomName)=> {
+        console.log(roomName)
+        socket.join(roomName)
+    })
+})
+
+eventEmitter.on('orderUpdated', (data)=> {
+    io.to(`order_${data.id}`).emit('orderUpdated', data)
+})
+
+eventEmitter.on('orderPlaced', (data)=> {
+    io.to('adminRoom').emit('orderPlaced', data)
+})
+
+
 //db connection
 const Database = mongoose.connection;
 Database.on("error", console.error.bind(console, "connection error:😕"));
@@ -78,7 +104,7 @@ console.log("Database connected😎");
 });
 
 //Server Starting
-app.listen(PORT, () => {
+server.listen(PORT, () => {
  console.log(`Server is running at port : ${PORT}`);
 });
 

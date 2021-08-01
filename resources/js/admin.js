@@ -1,7 +1,7 @@
 import axios from 'axios';
 import moment from 'moment';
 
-export function initAdmin() {
+export function initAdmin(socket) {
     const orderTableBody = document.querySelector('#orderTableBody')
     let orders = []
     let markup
@@ -13,11 +13,10 @@ export function initAdmin() {
         }
     }).then(res=> {
         orders = res.data;
-        markup = generateMarkup(orders);
-        orderTableBody.innerHTML = markup;
-    })
-    .catch(err => {
-        console.log(err);
+        markup = generateMarkup(orders)
+        orderTableBody.innerHTML = markup
+    }).catch(err => {
+        console.log(err)
     })
 
 
@@ -34,7 +33,7 @@ export function initAdmin() {
 
     //generating data for admin from DB
      function generateMarkup(orders) {
-        return orders.item.map(order => {
+        return orders.map(order => {
             return `
                 <tr>
                 <td class="border px-4 py-2 text-green-900">
@@ -84,5 +83,19 @@ export function initAdmin() {
         `
         }).join('')
     }
+
+    //Socket Connection
+
+    socket.on('orderPlaced', (order)=> {
+        Toastify({
+            text: "New order",
+            duration: 1500,
+            backgroundColor: "#F82C00 ",
+            className: "info"
+        }).showToast();
+        orders.unshift(order)
+        orderTableBody.innerHTML = ''
+        orderTableBody.innerHTML = generateMarkup(orders)
+    })
 }
 
