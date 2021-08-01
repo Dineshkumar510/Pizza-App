@@ -82,7 +82,6 @@ app.use(Router);
 io.on('connect', (socket)=> {
     //join
     socket.on('join', (roomName)=> {
-        console.log(roomName)
         socket.join(roomName)
     })
 })

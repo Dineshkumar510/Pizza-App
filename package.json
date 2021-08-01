@@ -8,7 +8,8 @@
     "dev": "nodemon server.js",
     "develop": "npm run development",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "node_modules/.bin/webpack --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "start": "node_modules/.bin/webpack --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "webpack --config=node_modules/laravel-mix/setup/webpack.config.js",
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "author": "Dinesh kumar",
