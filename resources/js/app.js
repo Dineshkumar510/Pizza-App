@@ -1,6 +1,7 @@
 import axios from 'axios';
 import moment from 'moment';
 import { initAdmin } from './admin';
+import { initStripe } from './payment';
 
 let addToCart = document.querySelectorAll('.add-to-cart');
 let cartCounter = document.querySelector('#cartCounter');
@@ -80,6 +81,9 @@ function updateStatus(order) {
 
 //calling updateStatus function with params: order
 updateStatus(order);
+
+//Payment gateway
+initStripe()
 
 
 //Socket connection

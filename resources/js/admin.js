@@ -1,38 +1,33 @@
-import axios from 'axios';
-import moment from 'moment';
+import axios from 'axios'
+import moment from 'moment'
 
 export function initAdmin(socket) {
     const orderTableBody = document.querySelector('#orderTableBody')
     let orders = []
     let markup
 
-    // AJAX call for customer orders data from DB.
     axios.get('/admin/orders', {
         headers: {
             "X-Requested-With": "XMLHttpRequest"
         }
-    }).then(res=> {
-        orders = res.data;
+    }).then(res => {
+        orders = res.data
         markup = generateMarkup(orders)
         orderTableBody.innerHTML = markup
     }).catch(err => {
         console.log(err)
     })
 
-
-    //making function of more specific data extraction from DB.
-    function renderItems(items){
+    function renderItems(items) {
         let parsedItems = Object.values(items)
         return parsedItems.map((menuItem) => {
             return `
-            <p>${ menuItem.item.name } - ${ menuItem.qty } pcs </p>
+                <p>${ menuItem.item.name } - ${ menuItem.qty } pcs </p>
             `
         }).join('')
-    }
+      }
 
-
-    //generating data for admin from DB
-     function generateMarkup(orders) {
+    function generateMarkup(orders) {
         return orders.map(order => {
             return `
                 <tr>
@@ -74,7 +69,7 @@ export function initAdmin(socket) {
                     </div>
                 </td>
                 <td class="border px-4 py-2">
-                    ${ moment(order.createdAt).format('MMMM Do YYYY, h:mm: a') }
+                    ${ moment(order.createdAt).format('hh:mm A') }
                 </td>
                 <td class="border px-4 py-2">
                     ${ order.paymentStatus ? 'paid' : 'Not paid' }
@@ -83,10 +78,8 @@ export function initAdmin(socket) {
         `
         }).join('')
     }
-
-    //Socket Connection
-
-    socket.on('orderPlaced', (order)=> {
+    // Socket
+    socket.on('orderPlaced', (order) => {
         Toastify({
             text: "New order",
             duration: 1500,
@@ -98,4 +91,3 @@ export function initAdmin(socket) {
         orderTableBody.innerHTML = generateMarkup(orders)
     })
 }
-
