@@ -15,9 +15,11 @@ const session = require('express-session');
 const flash = require('express-flash');
 const MongoDbStore = require('connect-mongo');
 const passport = require('passport');
+const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
 const { Console } = require('console');
 const Emitter = require('events'); 
-const dbUrl = 'mongodb://localhost:27017/Pizza';
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/Pizza';
 
 
 //DataBase Connection
@@ -60,8 +62,11 @@ app.use((req, res, next)=>{
    });
 
 
-//cookie id generate
 app.use(flash());
+app.use(helmet({contentSecurityPolicy: false }));
+app.use(mongoSanitize({
+    replaceWith: '_'
+}));
 
 //Assets
 app.use(express.static('public'));
@@ -76,6 +81,9 @@ app.set('view engine', 'ejs');
 
 //routes
 app.use(Router);
+app.use((req, res)=> {
+    res.status(404). render('errors/404')
+});
 
 
 //socket connection
@@ -85,11 +93,9 @@ io.on('connect', (socket)=> {
         socket.join(roomName)
     })
 })
-
 eventEmitter.on('orderUpdated', (data)=> {
     io.to(`order_${data.id}`).emit('orderUpdated', data)
 })
-
 eventEmitter.on('orderPlaced', (data)=> {
     io.to('adminRoom').emit('orderPlaced', data)
 })

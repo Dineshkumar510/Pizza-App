@@ -82,6 +82,7 @@ function updateStatus(order) {
 //calling updateStatus function with params: order
 updateStatus(order);
 
+
 //Payment gateway
 initStripe()
 
