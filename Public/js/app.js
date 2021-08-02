@@ -3153,6 +3153,119 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./resources/js/CardWidget.js":
+/*!************************************!*\
+  !*** ./resources/js/CardWidget.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CardWidget": () => (/* binding */ CardWidget)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* provided dependency */ var console = __webpack_require__(/*! ./node_modules/console-browserify/index.js */ "./node_modules/console-browserify/index.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var CardWidget = /*#__PURE__*/function () {
+  function CardWidget(stripe) {
+    _classCallCheck(this, CardWidget);
+
+    _defineProperty(this, "stripe", null);
+
+    _defineProperty(this, "card", null);
+
+    _defineProperty(this, "style", {
+      base: {
+        color: '#32325d',
+        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+        fontSmoothing: 'antialiased',
+        fontSize: '16px',
+        '::placeholder': {
+          color: '#aab7c4'
+        }
+      },
+      invalid: {
+        color: '#fa755a',
+        iconColor: '#fa755a'
+      }
+    });
+
+    this.stripe = stripe;
+  }
+
+  _createClass(CardWidget, [{
+    key: "mount",
+    value: function mount() {
+      var elements = this.stripe.elements();
+      this.card = elements.create('card', {
+        style: this.style,
+        hidePostalCode: true
+      });
+      this.card.mount('#card-element');
+    }
+  }, {
+    key: "destroy",
+    value: function destroy() {
+      this.card.destroy();
+    }
+  }, {
+    key: "createToken",
+    value: function () {
+      var _createToken = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return this.stripe.createToken(this.card);
+
+              case 3:
+                result = _context.sent;
+                return _context.abrupt("return", result.token);
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                console.log(_context.t0);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this, [[0, 7]]);
+      }));
+
+      function createToken() {
+        return _createToken.apply(this, arguments);
+      }
+
+      return createToken;
+    }()
+  }]);
+
+  return CardWidget;
+}();
+
+/***/ }),
+
 /***/ "./resources/js/admin.js":
 /*!*******************************!*\
   !*** ./resources/js/admin.js ***!
@@ -3229,11 +3342,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* provided dependency */ var console = __webpack_require__(/*! ./node_modules/console-browserify/index.js */ "./node_modules/console-browserify/index.js");
 
 function placeOrder(formObject) {
   axios__WEBPACK_IMPORTED_MODULE_0___default().post('/orders', formObject).then(function (res) {
-    console.log(res.data);
     Toastify({
       text: res.data.message,
       duration: 1500,
@@ -3400,6 +3511,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _stripe_stripe_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @stripe/stripe-js */ "./node_modules/@stripe/stripe-js/dist/stripe.esm.js");
 /* harmony import */ var _apiService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./apiService */ "./resources/js/apiService.js");
+/* harmony import */ var _CardWidget__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CardWidget */ "./resources/js/CardWidget.js");
 /* provided dependency */ var console = __webpack_require__(/*! ./node_modules/console-browserify/index.js */ "./node_modules/console-browserify/index.js");
 
 
@@ -3423,62 +3535,60 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+
 function initStripe() {
   return _initStripe.apply(this, arguments);
 }
 
 function _initStripe() {
-  _initStripe = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-    var stripe, card, mountWidget, paymentType, paymentForm;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+  _initStripe = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+    var stripe, card, paymentType, paymentForm;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
       while (1) {
-        switch (_context.prev = _context.next) {
+        switch (_context2.prev = _context2.next) {
           case 0:
-            mountWidget = function _mountWidget() {
-              var elements = stripe.elements();
-              var style = {
-                base: {
-                  color: '#32325d',
-                  fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-                  fontSmoothing: 'antialiased',
-                  fontSize: '16px',
-                  '::placeholder': {
-                    color: '#aab7c4'
-                  }
-                },
-                invalid: {
-                  color: '#fa755a',
-                  iconColor: '#fa755a'
-                }
-              };
-              card = elements.create('card', {
-                style: style,
-                hidePostalCode: true
-              });
-              card.mount('#card-element');
-            };
-
-            _context.next = 3;
+            _context2.next = 2;
             return (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_1__.loadStripe)('pk_test_51JJgp5SIHcS2aSPPrd1B4HSCCtCR27pg7wRZmthcsW0m6JQVfBSpkTMGEJtnaJ44J0SeTIO9RSJlPFyLIsWTy7TV00J0Pua6de');
 
-          case 3:
-            stripe = _context.sent;
-            card = null;
+          case 2:
+            stripe = _context2.sent;
+            card = null; //function mountWidget() {
+            // const elements = stripe.elements()
+            // let style = {
+            //     base: {
+            //         color: '#32325d',
+            //         fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+            //         fontSmoothing: 'antialiased',
+            //         fontSize: '16px',
+            //         '::placeholder': {
+            //             color: '#aab7c4'
+            //         }
+            //     },
+            //     invalid: {
+            //         color: '#fa755a',
+            //         iconColor: '#fa755a'
+            //     }
+            // };
+            // card = elements.create('card', { style, hidePostalCode: true })
+            // card.mount('#card-element')
+            //}
+
             paymentType = document.querySelector('#paymentType');
 
             if (paymentType) {
-              _context.next = 8;
+              _context2.next = 7;
               break;
             }
 
-            return _context.abrupt("return");
+            return _context2.abrupt("return");
 
-          case 8:
+          case 7:
             paymentType.addEventListener('change', function (e) {
               console.log(e.target.value);
 
               if (e.target.value === 'card') {
-                mountWidget();
+                card = new _CardWidget__WEBPACK_IMPORTED_MODULE_3__.CardWidget(stripe);
+                card.mount();
               } else {
                 card.destroy();
               }
@@ -3487,50 +3597,74 @@ function _initStripe() {
             paymentForm = document.querySelector('#payment-form');
 
             if (paymentForm) {
-              paymentForm.addEventListener('submit', function (e) {
-                e.preventDefault();
-                var formData = new FormData(paymentForm);
-                var formObject = {};
+              paymentForm.addEventListener('submit', /*#__PURE__*/function () {
+                var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e) {
+                  var formData, formObject, _iterator, _step, _step$value, key, value, token;
 
-                var _iterator = _createForOfIteratorHelper(formData.entries()),
-                    _step;
+                  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+                    while (1) {
+                      switch (_context.prev = _context.next) {
+                        case 0:
+                          e.preventDefault();
+                          formData = new FormData(paymentForm);
+                          formObject = {};
+                          _iterator = _createForOfIteratorHelper(formData.entries());
 
-                try {
-                  for (_iterator.s(); !(_step = _iterator.n()).done;) {
-                    var _step$value = _slicedToArray(_step.value, 2),
-                        key = _step$value[0],
-                        value = _step$value[1];
+                          try {
+                            for (_iterator.s(); !(_step = _iterator.n()).done;) {
+                              _step$value = _slicedToArray(_step.value, 2), key = _step$value[0], value = _step$value[1];
+                              formObject[key] = value;
+                            }
+                          } catch (err) {
+                            _iterator.e(err);
+                          } finally {
+                            _iterator.f();
+                          }
 
-                    formObject[key] = value;
-                  }
-                } catch (err) {
-                  _iterator.e(err);
-                } finally {
-                  _iterator.f();
-                }
+                          if (card) {
+                            _context.next = 8;
+                            break;
+                          }
 
-                if (!card) {
-                  //Ajax
-                  (0,_apiService__WEBPACK_IMPORTED_MODULE_2__.placeOrder)(formObject);
-                  return;
-                } //verify card
+                          //Ajax
+                          (0,_apiService__WEBPACK_IMPORTED_MODULE_2__.placeOrder)(formObject);
+                          return _context.abrupt("return");
 
+                        case 8:
+                          _context.next = 10;
+                          return card.createToken();
 
-                stripe.createToken(card).then(function (result) {
-                  formObject.stripeToken = result.token.id;
-                  (0,_apiService__WEBPACK_IMPORTED_MODULE_2__.placeOrder)(formObject);
-                })["catch"](function (err) {
-                  console.log(err);
-                });
-              });
+                        case 10:
+                          token = _context.sent;
+                          formObject.stripeToken = token.id;
+                          (0,_apiService__WEBPACK_IMPORTED_MODULE_2__.placeOrder)(formObject); //verify card
+                          // stripe.createToken(card).then((result)=> {
+                          //     formObject.stripeToken = result.token.id;
+                          //     placeOrder(formObject);
+                          // }).catch((err)=> {
+                          //     console.log(err)
+                          // })
+
+                        case 13:
+                        case "end":
+                          return _context.stop();
+                      }
+                    }
+                  }, _callee);
+                }));
+
+                return function (_x) {
+                  return _ref.apply(this, arguments);
+                };
+              }());
             }
 
-          case 11:
+          case 10:
           case "end":
-            return _context.stop();
+            return _context2.stop();
         }
       }
-    }, _callee);
+    }, _callee2);
   }));
   return _initStripe.apply(this, arguments);
 }

@@ -2,7 +2,6 @@ import axios from 'axios';
 
 export function placeOrder(formObject) {
     axios.post('/orders', formObject).then((res)=>{
-        console.log(res.data)
         Toastify({
             text: res.data.message,
             duration: 1500,

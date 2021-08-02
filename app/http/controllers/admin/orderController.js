@@ -1,6 +1,5 @@
-const order = require("../../../models/order")
+const order = require("../../../models/order");
 
-const Order = require('../../../models/order')
 
 function orderController() {
     return {
@@ -10,10 +9,10 @@ function orderController() {
                    return res.json(orders)
                } else {
                 return res.render('admin/orders')
-               }
+               } 
            })
         }
     }
 }
 
-module.exports = orderController
+module.exports = orderController;

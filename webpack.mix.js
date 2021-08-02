@@ -12,3 +12,4 @@ mix.webpackConfig(webpack => {
         ]
     };
 });
+
