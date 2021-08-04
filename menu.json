@@ -62,4 +62,36 @@
   "image": "pizza.png",
   "price": "500",
   "size": "medium"
+},{
+    "_id": {
+      "$oid": "cevm7he0ef8lan5mqth17b5v"
+    },
+    "name": "Pepperoni",
+    "image": "pizza.png",
+    "price": "250",
+    "size": "small"
+},{
+  "_id": {
+    "$oid": "ia663ft1r6i4zrp7qlc37ra3"
+  },
+  "name": "Carbonara",
+  "image": "pizza.png",
+  "price": "400",
+  "size": "medium"
+},{
+  "_id": {
+    "$oid": "w4i276zret7ge2tul6lx0u4g"
+  },
+  "name": "Chicken Mushroom",
+  "image": "pizza.png",
+  "price": "200",
+  "size": "small"
+},{
+  "_id": {
+    "$oid": "8bdqjhfos7knvqgnlksm24q0"
+  },
+  "name": "Paneer pizza",
+  "image": "pizza.png",
+  "price": "350",
+  "size": "medium"
 }]

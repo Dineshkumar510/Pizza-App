@@ -4,7 +4,7 @@ export function placeOrder(formObject) {
     axios.post('/orders', formObject).then((res)=>{
         Toastify({
             text: res.data.message,
-            duration: 1500,
+            duration: 2000,
             backgroundColor: "#F82C00 ",
             className: "info"
         }).showToast();
@@ -15,8 +15,8 @@ export function placeOrder(formObject) {
 
     }).catch((error)=> {
         Toastify({
-            text: error.res.data.message,
-            duration: 1500,
+            text: "Something Went Wrong😰",
+            duration: 2000,
             backgroundColor: "#F82C00 ",
             className: "info"
         }).showToast();

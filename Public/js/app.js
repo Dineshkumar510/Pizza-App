@@ -3347,7 +3347,7 @@ function placeOrder(formObject) {
   axios__WEBPACK_IMPORTED_MODULE_0___default().post('/orders', formObject).then(function (res) {
     Toastify({
       text: res.data.message,
-      duration: 1500,
+      duration: 2000,
       backgroundColor: "#F82C00 ",
       className: "info"
     }).showToast();
@@ -3356,8 +3356,8 @@ function placeOrder(formObject) {
     }, 1000);
   })["catch"](function (error) {
     Toastify({
-      text: error.res.data.message,
-      duration: 1500,
+      text: "Something Went Wrong😰",
+      duration: 2000,
       backgroundColor: "#F82C00 ",
       className: "info"
     }).showToast();
@@ -3428,7 +3428,21 @@ if (alertMsg) {
   }, 2000);
 }
 
-; //Change order status
+; //pwd show
+
+var togglePassword = document.querySelector('#togglePassword');
+var password = document.querySelector('#password');
+
+if (togglePassword) {
+  togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    var type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type); // toggle the eye / eye slash icon
+
+    this.classList.toggle('bi-eye');
+  });
+} //Change order status
+
 
 var statuses = document.querySelectorAll('.status_line');
 var hiddenInput = document.querySelector('#hiddenInput');

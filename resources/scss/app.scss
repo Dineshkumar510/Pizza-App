@@ -16,12 +16,35 @@ body {
     color: $dark;
 };
 
+//Scroll-bar
+body::-webkit-scrollbar {
+    width: 10px;               /* width of the entire scrollbar */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: $secondary;        /* color of the tracking area */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: $primary;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid $pure;  /* creates padding around scroll thumb */
+  }
+  
+
 nav li:last-child a {
     background: $primary;
     &:hover {
         background-color: $primary-hover;
     }
 };
+
+.toggle {
+    background-color: $primary !important;
+    &:hover {
+        color: $primary-hover;
+    }
+}
 
 nav li a {
     transition:$smooth;
@@ -34,6 +57,12 @@ nav li a {
         color: $primary;
     }
 };
+
+form i {
+    margin-left: -30px;
+    cursor: pointer;
+}
+
 
 section.hero {
     background: $secondary;
@@ -281,4 +310,8 @@ section.status {
 
 .StripeElement--webkit-autofill {
     background-color: #fefde5 !important;
+}
+
+.footer {
+    background-color: $primary;
 }

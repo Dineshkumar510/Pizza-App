@@ -48,6 +48,20 @@ if(alertMsg){
 };
 
 
+//pwd show
+var togglePassword = document.querySelector('#togglePassword');
+var password = document.querySelector('#password');
+
+if(togglePassword) {
+    togglePassword.addEventListener('click', function (e) {
+        // toggle the type attribute
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        // toggle the eye / eye slash icon
+        this.classList.toggle('bi-eye');
+    });
+}
+
 
 //Change order status
 let statuses = document.querySelectorAll('.status_line');

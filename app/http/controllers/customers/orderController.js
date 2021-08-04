@@ -35,14 +35,14 @@ function orderController () {
                                 const eventEmitter = req.app.get('eventEmitter')
                                 eventEmitter.emit('orderPlaced', ord)
                                 delete req.session.cart
-                                return res.json({message: 'Payment Successful & order placed Successfully'})
+                                return res.json({message: 'Payment Successful & order placed Successfully🤗'})
                             }).catch((err)=> {
                                 console.log(err)
                             })
 
                         }).catch((err)=> {
                             delete req.session.cart
-                            return res.json({message: 'Order Placed but Payment Failed, You can Pay at Door Delivery'})
+                            return res.json({message: 'Order Placed but Payment Failed, You can Pay at Door Delivery😰'})
                         })
                     } else {
                         delete req.session.cart
