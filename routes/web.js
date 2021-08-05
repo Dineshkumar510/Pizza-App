@@ -13,7 +13,6 @@ const auth = require('../app/http/middlewares/auth');
 const admin = require('../app/http/middlewares/admin');
 
 
-
 Router.get('/',homeController().index);
 
 Router.get('/login', guest, authController().login);

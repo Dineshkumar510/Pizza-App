@@ -97,6 +97,7 @@ function updateStatus(order) {
 updateStatus(order);
 
 
+
 //Payment gateway
 initStripe()
 
@@ -126,4 +127,5 @@ socket.on('orderUpdated', (data)=> {
         className: "info"
     }).showToast();
 })
+
 

@@ -11,6 +11,7 @@
             <p><%= messages.success %> </p>
         </div>
         <% } %> 
+
         <table class="w-full table-auto bg-white">
             <thead>
                 <tr>
@@ -24,19 +25,19 @@
 
                 <% if(orders.length) { %> 
                     <% orders.forEach((order)=> { %>
-                        <tr>
-                            <td class="border px-4 py-2">
+                        <tr class="orderTick">
+                            <td class="cmp border px-4 py-2">
                                 <a class="link statusBar" href="/customer/orders/id_<%= order._id %>">
-                                    <%= order._id %></a>
+                                    <span ><%= order._id %></span></a>
                             </td>
                             <td class="border px-4 py-2">
-                                <div class="statusBar"><%= order.phone %></div> 
+                                <div class="statusBar"><span><%= order.phone %></span></div> 
                             </td>
                             <td class="border px-4 py-2">
-                                <div class="statusBar"><%= order.address %></div>
+                                <div class="statusBar"><span><%= order.address %></span></div>
                             </td>
                             <td class="border px-4 py-2">
-                                <div class="statusBar"><%= moment(order.createdAt).format('MMMM Do YYYY, h:mm: a') %></div> 
+                                <div class="statusBar"><span><%= moment(order.createdAt).format('MMMM Do YYYY, h:mm: a') %></span></div> 
                             </td>
                         </tr> 
                   <%  }) %> 
