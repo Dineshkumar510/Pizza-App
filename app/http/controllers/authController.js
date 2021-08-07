@@ -3,9 +3,9 @@ const bcrypt = require('bcryptjs');
 const passport  = require('passport');
 
 function authController () {
-    const _getRedirectUrl = (req) => {
-        return req.user.role === 'admin' ? '/admin/orders' : '/customer/orders'
-    }
+    //const _getRedirectUrl = (req) => {
+        //return req.user.role === 'admin' ? '/admin/orders' : '/customer/orders'
+   //}
 
     return {
         //login
@@ -37,10 +37,13 @@ function authController () {
                         req.flash('error', info.message)
                         return next(err)
                     }
-                    return res.redirect(_getRedirectUrl(req))
+                    if(req.user.role === 'admin') {
+                        return res.redirect('/admin/orders') //(_getRedirectUrl(req))
+                    } else {
+                        return res.redirect('/')
+                    }
                 })
             })(req, res, next)
-
         },
 
         //register
@@ -83,7 +86,7 @@ function authController () {
             user.save().then((user)=>{
                 //login
                 req.flash('success', 'Welcome to Pizza-App😍')
-                return res.redirect('/')
+                return res.redirect('/login')
             }).catch((err)=>{
                 req.flash('error', 'Something Went Wrong🥺')
                 return res.redirect('/register')

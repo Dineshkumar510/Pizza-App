@@ -63,35 +63,35 @@
   "price": "500",
   "size": "medium"
 },{
-    "_id": {
-      "$oid": "cevm7he0ef8lan5mqth17b5v"
+  "_id":{
+    "$oid":"610969bca02211221af8feba"
+  },
+  "name":" Neapolitan ",
+  "image":"pizza.png",
+  "price":"250",
+  "size":"small"
+},{
+  "_id":{
+    "$oid":"61096a2fa02211221af8febb"
     },
-    "name": "Pepperoni",
-    "image": "pizza.png",
-    "price": "250",
-    "size": "small"
+    "name":"Thick Crust",
+    "image":"pizza.png",
+    "price":"350",
+    "size":"medium"
 },{
-  "_id": {
-    "$oid": "ia663ft1r6i4zrp7qlc37ra3"
-  },
-  "name": "Carbonara",
-  "image": "pizza.png",
-  "price": "400",
-  "size": "medium"
+  "_id":{
+    "$oid":"61096a7da02211221af8febc"
+    },
+    "name":"Sicilian Pizza",
+    "image":"pizza.png",
+    "price":"500",
+    "size":"large"
 },{
-  "_id": {
-    "$oid": "w4i276zret7ge2tul6lx0u4g"
+  "_id":{
+    "$oid":"61096aaea02211221af8febd"
   },
-  "name": "Chicken Mushroom",
-  "image": "pizza.png",
-  "price": "200",
-  "size": "small"
-},{
-  "_id": {
-    "$oid": "8bdqjhfos7knvqgnlksm24q0"
-  },
-  "name": "Paneer pizza",
-  "image": "pizza.png",
-  "price": "350",
-  "size": "medium"
+  "name":"Detroit",
+  "image":"pizza.png",
+  "price":"200",
+  "size":"small"
 }]

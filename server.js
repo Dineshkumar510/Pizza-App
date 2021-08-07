@@ -20,7 +20,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const { Console } = require('console');
 const Emitter = require('events'); 
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/Pizza';
-
+ 
 
 //DataBase Connection
 mongoose.connect(dbUrl, {
@@ -54,10 +54,11 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 
-//Global middleware 
+//Global access
 app.use((req, res, next)=>{
     res.locals.session = req.session
     res.locals.user = req.user
+    res.locals.order = req.order
     next();
    });
 
