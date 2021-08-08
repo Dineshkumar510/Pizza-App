@@ -73,7 +73,7 @@ app.use(mongoSanitize({
 }));
 
 //Assets
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/Public'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
