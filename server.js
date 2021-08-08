@@ -1,4 +1,7 @@
-require('dotenv').config()
+if(process.env.NODE_ENV !== "production" ) {
+    require('dotenv').config();
+}
+
 const express = require('express');
 const app = express();
 const socketio = require('socket.io');
@@ -38,9 +41,10 @@ app.set('eventEmitter', eventEmitter);
 //The sessions are stored in mongodb in 
 //session config you can see on "store" option 
 
+const secret =  process.env.COOKIE_SECRET || 'thisismysecret';
 //Session Config
 app.use(session({
-    secret: process.env.COOKIE_SECRET,
+    secret: secret,
     resave: false,
     store: MongoDbStore.create({mongoUrl: dbUrl}),
     saveUninitialized: false,
