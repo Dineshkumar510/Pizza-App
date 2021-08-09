@@ -8,6 +8,19 @@ _**Customer Dummy credentials:**_  Email: RecruiterPizzaApp@gmail.com, password:
 
 _**Admin Dummy credentials:**_  Email: RecruiterPizzaAppAdmin@gmail.com, password: PizzaAppAdmin123
 
+## **Payment**
+
+***Payment with COD***
+
+ - It doesn't require to do any thing but make shore you have to fill Phone & address block completely
+
+***Payment with card:***
+
+ - use  "4242 4242 4242 4242" as card number 
+ - And for date/month use "Any future date"
+ - And for cvv use "Any random 3 numbers"
+
+
 ## Project Tools-Used-In:
 
 -   **Node.js**
